@@ -75,6 +75,86 @@ var variable={
 
     },
 
+    //Bank Application
+
+    fbankbutton:function () {
+        element(objects.FBankButton).click();
+        browser.sleep(3000);
+        element(objects.FBankDropdown).click();
+        element(objects.FBankDropdownname).click();
+        //browser.sleep(3000);
+        element(objects.FLoginButton).click();
+        browser.sleep(3000);
+    },
+
+
+    fverifyname:function(){
+        var x=element(objects.FNamecheck);
+        expect(x.getText()).toContain("Harry Potter");
+
+    },
+    fdepositbutton:function (amount) {
+        element(objects.Fdepositbutton).click();
+        browser.sleep(3000);
+        element(objects.Fdeposittext).sendKeys(amount);
+        browser.sleep(3000);
+        element(objects.Fdepositbutton1).click();
+        browser.sleep(3000);
+
+    },
+
+    ftransactionbutton:function () {
+        element(objects.FTransaction).click();
+        browser.sleep(3000);
+        expect(browser.getCurrentUrl()).toBe("http://www.way2automation.com/angularjs-protractor/banking/#/listTx");
+        element(objects.FBackbutton).click();
+        browser.sleep(3000);
+        expect(browser.getCurrentUrl()).toBe("http://www.way2automation.com/angularjs-protractor/banking/#/account");
+
+    },
+
+
+    fwithdraw:function (withdrawvalue) {
+        element(objects.Fwithdrawal).click();
+        browser.sleep(3000);
+        var totalamount=element(objects.FTotalamount);
+        totalamount.getText().then(function(total){
+            element(objects.FWithdrawaltext).sendKeys(withdrawvalue);
+            browser.sleep(3000);
+            element(objects.Fwithdrawbutton).click();
+            browser.sleep(3000);
+            var x=element(objects.FVErifywithdrawmsg);
+            if(totalamount>=withdrawvalue)
+            {
+                expect(x.getText()).toBe("Transaction Failed. You can not withdraw amount more than the balance.");
+
+            }
+            else
+            {
+                expect(x.getText()).toBe("Transaction successful");
+            }
+
+            browser.sleep(3000);
+        })
+    },
+       fBankmanagerlogin:function(){
+
+        element(objects.FbankManagerlogin).click();
+        //expect(browser.getCurrentUrl()).toBe("http://www.way2automation.com/angularjs-protractor/banking/#/manager");
+       },
+
+       faddcustomer:function (fname,lname,Postcode) {
+        element(objects.FAddcustomer).click();
+        expect(browser.getCurrentUrl()).toBe("http://www.way2automation.com/angularjs-protractor/banking/#/manager");
+        browser.sleep(3000);
+        element(objects.FfirstName).sendKeys(fname);
+        browser.sleep(3000);
+        element(objects.Flastname).sendKeys(lname);
+        element(objects.Fpostcode).sendKeys(Postcode);
+        browser.sleep(3000);
+        element(objects.FAddingcustomerbutton).click();
+        browser.sleep(3000);
+    },
 
 }
 module.exports=variable;
