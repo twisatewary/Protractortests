@@ -2,16 +2,18 @@ var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 exports.config = {
     framework: 'jasmine',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['C:\\Users\\twisa.tewary\\Desktop\\test1\\src\\testsuites\\google.js'],
-   // directConnect:true,
+    specs:['C:\\Users\\twisa.tewary\\Desktop\\test1\\dashboard.js'],
+    //specs: ['C:\\Users\\twisa.tewary\\Desktop\\test1\\src\\testsuites\\google.js'],
+    //specs:['C:\\Users\\twisa.tewary\\Desktop\\test1\\src\\testsuites\\dynamictest.js']
+     directConnect:true,
    // multicapabilities: {
       //  browserName: 'internet explorer'
        // browserName: 'firefox'
   //  }
-  jasmineNodeOpts: {
+    jasmineNodeOpts: {
     defaultTimeoutInterval: 2500000
     },
-    onPrepare: function() {
+   /* onPrepare: function() {
       var jasmineReporters = require('jasmine-reporters');
       jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
           consolidateAll: true,
@@ -27,7 +29,7 @@ exports.config = {
            savePath: './reports/htmlReports'
          })
        );
-    }
+    }*/
  }
     
 
