@@ -5,6 +5,7 @@ describe("dashboard",function(){
   it("title",function(){
      browser.getTitle().then(function (title) {
         expect(title).toEqual('Protractor practice website - Multiform');
+
      })
 
 
